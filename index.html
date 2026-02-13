@@ -3,6 +3,20 @@
   <head>
     <link rel="stylesheet" type="text/css" href="calendar.css">
   </head>
+  <audio id="bgMusic" src="./music.mp3" loop></audio>
+
+<script>
+  const music = document.getElementById("bgMusic");
+
+  function startMusic() {
+    music.volume = 0.5;
+    music.play();
+    document.removeEventListener("click", startMusic);
+  }
+
+  document.addEventListener("click", startMusic);
+</script>
+
   <body>
 </div>
     <div class="calendar">
@@ -39,12 +53,7 @@
         <div class="clock" id="clock-left"></div>
         <div class="clock" id="clock-right"></div>
       </div>
-      <div id="musicCover">
-  <img
-    id="coverImage"
-    src="./20250910_OVAL_Merch_Samarreta_1-01-removebg-preview.png"
-    alt="Music"
-  />
+  
 </div>
 
 <audio id="bgMusic" src="./music.mp3" preload="auto" loop></audio>
