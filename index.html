@@ -4,6 +4,12 @@
     <link rel="stylesheet" type="text/css" href="calendar.css">
   </head>
   <body>
+    <div id="musicCover">
+  <img src="./20250910_OVAL_Merch_Samarreta_1-01-removebg-preview.png" id="coverImage">
+</div>
+
+<audio id="bgMusic" src="./music.mp3" loop></audio>
+
     <div class="calendar">
       <div class="container">
         <div class="caltitle">
@@ -84,6 +90,16 @@
       window.addEventListener("scroll", placeNekoOverDateText);
     }
   }, 50);
+</script>
+<script>
+  const cover = document.getElementById("coverImage");
+  const music = document.getElementById("bgMusic");
+
+  cover.addEventListener("click", () => {
+    music.volume = 0.5;
+    music.play();
+    document.getElementById("musicCover").style.display = "none";
+  });
 </script>
 
 </body>
