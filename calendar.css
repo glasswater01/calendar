@@ -1,4 +1,14 @@
 /* Calendar Styles */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8fbccf; /* fondo opcional */
+}
+
 .calendar {
   width: 310px;
   padding: 10px;
