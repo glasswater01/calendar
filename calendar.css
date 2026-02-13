@@ -105,12 +105,11 @@ body {
 }
 
 .day {
-  border: 1px solid #ddd;
-  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.85); /* un poco transparente */
   color: #333;
 
   padding: 8px;
-
   border-radius: 0px;
   font-size: 15px;
   font-weight: 600;
@@ -119,6 +118,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
 }
+
 
 .highlight {
   background-color: #354c52;
