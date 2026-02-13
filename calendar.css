@@ -93,19 +93,38 @@ body {
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+
+  /* 6 filas (máximo típico de un mes en calendario) */
+  grid-template-rows: repeat(6, 1fr);
+
   gap: 10px;
-  flex-grow: 1;
+
+  /* esto hace que el grid ocupe todo el alto disponible */
+  flex: 1;
+  min-height: 0;
 }
 
+
 .day {
-  text-align: center;
-  padding: 20px 0;
-  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #e8edf1;
+  color: #333;
+
+  /* que rellene su celda del grid */
+  width: 100%;
+  height: 100%;
+
+  /* centrado del número */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
   font-size: 18px;
   font-weight: 500;
-  border: 1px solid #ddd;
-  background-color: #e8edf1; /* Light grey */
-  color: #333;
+
+  /* opcional: para que se sientan “más cuadrados” */
+  aspect-ratio: 1 / 1;
 }
 
 .highlight {
