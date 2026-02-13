@@ -50,49 +50,39 @@
 
 <script>
   function findNekoElement() {
-    // 1) lo típico
-    let el = document.getElementById("neko");
-    if (el) return el;
-
-    // 2) otras variantes / o directamente la imagen del webneko
-    el = document.querySelector(".neko");
-    if (el) return el;
-
-    el = document.querySelector('img[src*="webneko"]');
-    if (el) return el;
-
-    return null;
+    return (
+      document.getElementById("neko") ||
+      document.querySelector(".neko") ||
+      document.querySelector('img[src*="webneko"]')
+    );
   }
 
-  function getCalendarOffset() {
-    const cal = document.querySelector(".calendar");
-    if (!cal) return { x: 0, y: 0 };
-    const r = cal.getBoundingClientRect();
-    const pad = 10; // margen dentro del calendario
-    return { x: r.left + pad, y: r.top + pad };
-  }
-
-  // Reaplica el offset continuamente (porque el script del neko mueve el elemento todo el rato)
   function keepNekoInsideCalendar() {
+    const cal = document.querySelector(".calendar");
     const neko = findNekoElement();
-    if (!neko) return;
+    if (!cal || !neko) return;
 
-    const { x, y } = getCalendarOffset();
+    const r = cal.getBoundingClientRect();
+    const pad = 10;
 
-    // si el neko ya tiene un transform, lo respetamos y añadimos translate delante
-    const base = neko.style.transform || "";
-    const translated = `translate(${x}px, ${y}px) ${base}`.trim();
+    // Guardamos el transform original UNA sola vez (sin nuestros offsets)
+    if (!neko.dataset.baseTransform) {
+      neko.dataset.baseTransform = neko.style.transform || "";
+    }
 
-    // fuerza el transform en línea en cada tick
-    neko.style.transform = translated;
+    const x = r.left + pad;
+    const y = r.top + pad;
+
+    // ✅ No acumulamos: siempre ponemos translate(x,y) + el transform base
+    neko.style.transform = `translate(${x}px, ${y}px) ${neko.dataset.baseTransform}`.trim();
   }
 
-  // Espera a que el neko exista y luego lo “ancla visualmente” al calendario
   const wait = setInterval(() => {
-    if (findNekoElement()) {
+    const neko = findNekoElement();
+    if (neko) {
       clearInterval(wait);
       keepNekoInsideCalendar();
-      setInterval(keepNekoInsideCalendar, 50); // importante
+      setInterval(keepNekoInsideCalendar, 50);
       window.addEventListener("resize", keepNekoInsideCalendar);
       window.addEventListener("scroll", keepNekoInsideCalendar);
     }
