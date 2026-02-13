@@ -15,7 +15,7 @@ const clockElementRight = document.getElementById("clock-right");
 const fixedFullDateYear = currentDate1.getFullYear();
 const fixedFullDateMonth = currentDate1.getMonth() + 1;
 const fixedFullDateDay = currentDate1.getDate();
-const fixedJapaneseDay = japaneseDays[currentDate1.getDay()-1];
+const fixedJapaneseDay = japaneseDays[currentDate1.getDay() - 1];
 
 fullDate2Element.textContent = `日付: ${fixedFullDateYear}年${fixedFullDateMonth}月${fixedFullDateDay}日 (${fixedJapaneseDay})`;
 
@@ -25,61 +25,57 @@ function generateCalendar(year, month, day) {
   const today = new Date().getDate();
 
   const japaneseMonthName = japaneseMonths[month];
-  const japaneseDay = japaneseDays[new Date(year, month, day).getDay()];
 
   fullDate1Element.textContent = `${year}年${month + 1}月`;
   document.getElementById("japanese-month").textContent = japaneseMonthName;
 
   daysElement.innerHTML = "";
 
+  // Ajuste para que la semana empiece en lunes
   const firstDayOfWeek = (firstDay + 6) % 7;
 
+  // Huecos al inicio
   for (let i = 0; i < firstDayOfWeek; i++) {
     const emptyDay = document.createElement("div");
     emptyDay.classList.add("day");
     daysElement.appendChild(emptyDay);
   }
 
+  // Días del mes
   for (let d = 1; d <= daysInMonth; d++) {
-  const dayElement = document.createElement("div");
-  dayElement.classList.add("day");
+    const dayElement = document.createElement("div");
+    dayElement.classList.add("day");
 
-  // Número del día
-  const dayNumber = document.createElement("div");
-  dayNumber.textContent = d;
-  dayElement.appendChild(dayNumber);
+    // Número (arriba-izquierda con tu CSS)
+    const dayNumber = document.createElement("div");
+    dayNumber.textContent = d;
+    dayElement.appendChild(dayNumber);
 
-  // 🎉 Evento el 20 de febrero
-  if (d === 20 && month === 1) { // febrero = 1 (porque enero es 0)
-    const event = document.createElement("div");
-    event.textContent = "Evento";
-    event.classList.add("event");
-    dayElement.appendChild(event);
-  }
+    // 🎉 Evento: 20 de febrero
+    if (d === 20 && month === 1) { // febrero = 1 (enero es 0)
+      const event = document.createElement("div");
+      event.textContent = "Evento";
+      event.classList.add("event");
+      dayElement.appendChild(event);
+    }
 
-  if (d === today && month === fixedFullDateMonth - 1) {
-    dayElement.classList.add("highlight");
-  }
-
-  daysElement.appendChild(dayElement);
-}
-  
+    // Resaltar hoy (solo en el mes actual)
     if (d === today && month === fixedFullDateMonth - 1) {
       dayElement.classList.add("highlight");
     }
-  
+
     daysElement.appendChild(dayElement);
   }
 
+  // Resaltar día de la semana actual (solo en el mes actual)
+  const dayOfWeekElements = document.querySelectorAll(".day-of-week");
+  dayOfWeekElements.forEach(el => el.classList.remove("highlight2"));
+
   if (month === fixedFullDateMonth - 1) {
-    const firstDayOfWeek = new Date(year, month, day).getDay();
-    const dayOfWeekElements = document.querySelectorAll(".day-of-week");
-    dayOfWeekElements[firstDayOfWeek-1].classList.add("highlight2");
-  } else {
-    const dayOfWeekElements = document.querySelectorAll(".day-of-week");
-    dayOfWeekElements.forEach(element => {
-      element.classList.remove("highlight2");
-    });
+    const dow = new Date(year, month, day).getDay(); // 0=dom...6=sáb
+    // Tu array empieza en lunes, y en el HTML también, así que convertimos:
+    const indexMonFirst = (dow + 6) % 7; // 0=lun...6=dom
+    dayOfWeekElements[indexMonFirst].classList.add("highlight2");
   }
 }
 
@@ -101,11 +97,11 @@ generateCalendar(currentDate1.getFullYear(), currentDate1.getMonth(), currentDat
 function updateClocks() {
   const now = new Date();
 
-  const localTimeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+  const localTimeOptions = { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
   const localTime = now.toLocaleTimeString(undefined, localTimeOptions);
   clockElementLeft.textContent = `here: ${localTime}`;
 
-  const jstTimeOptions = { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+  const jstTimeOptions = { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false };
   const jstTime = now.toLocaleTimeString(undefined, jstTimeOptions);
   clockElementRight.textContent = `jst: ${jstTime}`;
 }
