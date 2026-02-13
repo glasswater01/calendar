@@ -92,13 +92,49 @@
   }, 50);
 </script>
 <script>
-  const cover = document.getElementById("coverImage");
-  const music = document.getElementById("bgMusic");
+  document.addEventListener("DOMContentLoaded", () => {
+    const cover = document.getElementById("coverImage");
+    const music = document.getElementById("bgMusic");
 
-  cover.addEventListener("click", () => {
-    music.volume = 0.5;
-    music.play();
-    document.getElementById("musicCover").style.display = "none";
+    if (!cover || !music) return;
+
+    cover.addEventListener("click", async () => {
+      try {
+        music.volume = 0.5;
+
+        if (music.paused) {
+          await music.play();
+        } else {
+          music.pause();
+        }
+      } catch (err) {
+        console.error(err);
+        alert("El navegador bloqueó el audio. Prueba a hacer clic otra vez.");
+      }
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cover = document.getElementById("coverImage");
+    const music = document.getElementById("bgMusic");
+
+    if (!cover || !music) return;
+
+    cover.addEventListener("click", async () => {
+      try {
+        music.volume = 0.5;
+
+        if (music.paused) {
+          await music.play();
+        } else {
+          music.pause();
+        }
+      } catch (err) {
+        console.error(err);
+        alert("El navegador bloqueó el audio. Prueba a hacer clic otra vez.");
+      }
+    });
   });
 </script>
 
