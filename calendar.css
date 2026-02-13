@@ -175,9 +175,10 @@ body {
 .highlight2 {
   font-weight: bold;
 }
-.event {
-  font-size: 12px;
-  margin-top: 5px;
-  color: #1D6AEC;
+.day.has-event {
+  background-size: cover;
+  background-position: center 40%; /* puedes ajustar este número */
+  background-repeat: no-repeat;
 }
+
 
