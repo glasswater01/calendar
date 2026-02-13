@@ -228,22 +228,7 @@ body {
   overflow: hidden;
 }
 
-/* Imagen decorativa centrada */
-.calendar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
 
-  background-image: url("./Oval_Icona_Avatar_2560x1440_1.png");
-  background-repeat: no-repeat;
-
-  background-position: center 100%; /* ⬇️ más abajo */
-  background-size: 25%;            /* 📏 más pequeño */
-
-  opacity: 0.12;                   /* 🌫️ más sutil */
-
-  pointer-events: none;
-}
 
 
 
