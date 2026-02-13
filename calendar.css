@@ -99,7 +99,7 @@ body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  gap: 6px;
+  gap: 10px;
   flex: 1 1 auto;
   min-height: 0;
 }
