@@ -197,9 +197,11 @@ body {
   padding: 4px 6px;
 }
 /* Desplaza visualmente al Neko para que quede dentro del calendario */
-#neko {
-  transform: translate(var(--neko-offset-x, 0px), var(--neko-offset-y, 0px));
+/* Por si acaso, evita que el gato bloquee clics */
+#neko, .neko, img[src*="webneko"] {
+  pointer-events: none;
 }
+
 
 
 
