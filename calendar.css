@@ -203,6 +203,26 @@ body {
 #neko, .neko, img[src*="webneko"] {
   pointer-events: none;
 }
+#musicCover {
+  position: fixed;
+  inset: 0;
+  background: transparent; /* sin fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#coverImage {
+  max-width: 55%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#coverImage:hover {
+  transform: scale(1.05);
+}
+
 
 
 
