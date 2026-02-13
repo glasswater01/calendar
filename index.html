@@ -6,17 +6,42 @@
   <audio id="bgMusic" src="./music.mp3" loop></audio>
 
 <script>
-  const music = document.getElementById("bgMusic");
+  document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bgMusic");
+    if (!music) return;
 
-  function startMusic() {
-    music.volume = 0.5;
-    music.play();
-    document.removeEventListener("click", startMusic);
-  }
+    function attachHover() {
+      const eventDay = document.querySelector(".day.has-event");
+      if (!eventDay) return;
 
-  document.addEventListener("click", startMusic);
+      let started = false;
+
+      eventDay.addEventListener("mouseenter", async () => {
+        try {
+          music.volume = 0.5;
+          await music.play();
+          started = true;
+        } catch (e) {
+          // Si el navegador lo bloquea, no hacemos nada (necesitaría click)
+          console.log("Autoplay/hover bloqueado:", e);
+        }
+      });
+
+      eventDay.addEventListener("mouseleave", () => {
+        if (started) {
+          music.pause();
+          music.currentTime = 0; // vuelve al inicio (opcional)
+          started = false;
+        }
+      });
+    }
+
+    // El calendario se regenera al cambiar de mes, así que re-enganchamos cada vez
+    attachHover();
+    document.getElementById("prev-month")?.addEventListener("click", () => setTimeout(attachHover, 0));
+    document.getElementById("next-month")?.addEventListener("click", () => setTimeout(attachHover, 0));
+  });
 </script>
-
   <body>
 </div>
     <div class="calendar">
