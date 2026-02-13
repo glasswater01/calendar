@@ -4,12 +4,7 @@
     <link rel="stylesheet" type="text/css" href="calendar.css">
   </head>
   <body>
-    <div id="musicCover">
-  <img src="./20250910_OVAL_Merch_Samarreta_1-01-removebg-preview.png" id="coverImage">
 </div>
-
-<audio id="bgMusic" src="./music.mp3" loop></audio>
-
     <div class="calendar">
       <div class="container">
         <div class="caltitle">
@@ -44,6 +39,16 @@
         <div class="clock" id="clock-left"></div>
         <div class="clock" id="clock-right"></div>
       </div>
+      <div id="musicCover">
+  <img
+    id="coverImage"
+    src="./20250910_OVAL_Merch_Samarreta_1-01-removebg-preview.png"
+    alt="Music"
+  />
+</div>
+
+<audio id="bgMusic" src="./music.mp3" preload="auto" loop></audio>
+
     </div>
 
 <script src="calendar.js"></script>
