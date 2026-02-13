@@ -23,7 +23,8 @@ fullDate2Element.textContent = `日付: ${fixedFullDateYear}年${fixedFullDateMo
 const EVENT_DAY = 20;
 const EVENT_MONTH_INDEX = 1; // Febrero = 1 (Enero = 0)
 const EVENT_LINK = "https://dice.fm/event/l8omew-oval-userband-riuka-20th-feb-sala-meteoro-barcelona-tickets"; //
-const EVENT_IMAGE_URL = "https://picsum.photos/800/800"; // <-- CAMBIA ESTO (o "./foto.jpg")
+const EVENT_IMAGE_URL = "./event.png";
+
 
 function generateCalendar(year, month, day) {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
