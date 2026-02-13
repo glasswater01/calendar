@@ -94,13 +94,8 @@ body {
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-
-  /* 6 filas (máximo típico de un mes en calendario) */
   grid-template-rows: repeat(6, 1fr);
-
   gap: 10px;
-
-  /* esto hace que el grid ocupe todo el alto disponible */
   flex: 1;
   min-height: 0;
 }
