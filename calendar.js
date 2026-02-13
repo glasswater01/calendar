@@ -19,6 +19,12 @@ const fixedJapaneseDay = japaneseDays[currentDate1.getDay() - 1];
 
 fullDate2Element.textContent = `日付: ${fixedFullDateYear}年${fixedFullDateMonth}月${fixedFullDateDay}日 (${fixedJapaneseDay})`;
 
+// ✅ CONFIG DEL EVENTO (20 de febrero)
+const EVENT_DAY = 20;
+const EVENT_MONTH_INDEX = 1; // Febrero = 1 (Enero = 0)
+const EVENT_LINK = "https://dice.fm/event/l8omew-oval-userband-riuka-20th-feb-sala-meteoro-barcelona-tickets"; //
+const EVENT_IMAGE_URL = "https://picsum.photos/800/800"; // <-- CAMBIA ESTO (o "./foto.jpg")
+
 function generateCalendar(year, month, day) {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
@@ -31,10 +37,10 @@ function generateCalendar(year, month, day) {
 
   daysElement.innerHTML = "";
 
-  // Ajuste para que la semana empiece en lunes
+  // Semana empezando en lunes
   const firstDayOfWeek = (firstDay + 6) % 7;
 
-  // Huecos al inicio
+  // Huecos al inicio del mes
   for (let i = 0; i < firstDayOfWeek; i++) {
     const emptyDay = document.createElement("div");
     emptyDay.classList.add("day");
@@ -46,17 +52,29 @@ function generateCalendar(year, month, day) {
     const dayElement = document.createElement("div");
     dayElement.classList.add("day");
 
-    // Número (arriba-izquierda con tu CSS)
+    // Número del día (lo usamos tanto en día normal como en el evento)
     const dayNumber = document.createElement("div");
     dayNumber.textContent = d;
-    dayElement.appendChild(dayNumber);
 
-    // 🎉 Evento: 20 de febrero
-    if (d === 20 && month === 1) { // febrero = 1 (enero es 0)
-      const event = document.createElement("div");
-      event.textContent = "Evento";
-      event.classList.add("event");
-      dayElement.appendChild(event);
+    // ✅ EVENTO: 20 de febrero con imagen + link
+    if (d === EVENT_DAY && month === EVENT_MONTH_INDEX) {
+      dayElement.classList.add("has-event");
+      dayElement.style.backgroundImage = `url("${EVENT_IMAGE_URL}")`;
+
+      // Todo el recuadro clicable
+      const a = document.createElement("a");
+      a.href = EVENT_LINK;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.classList.add("day-link");
+
+      // Metemos el número dentro del link
+      a.appendChild(dayNumber);
+
+      dayElement.appendChild(a);
+    } else {
+      // Día normal
+      dayElement.appendChild(dayNumber);
     }
 
     // Resaltar hoy (solo en el mes actual)
@@ -67,13 +85,12 @@ function generateCalendar(year, month, day) {
     daysElement.appendChild(dayElement);
   }
 
-  // Resaltar día de la semana actual (solo en el mes actual)
+  // Resaltar el día de la semana actual (solo en el mes actual)
   const dayOfWeekElements = document.querySelectorAll(".day-of-week");
   dayOfWeekElements.forEach(el => el.classList.remove("highlight2"));
 
   if (month === fixedFullDateMonth - 1) {
     const dow = new Date(year, month, day).getDay(); // 0=dom...6=sáb
-    // Tu array empieza en lunes, y en el HTML también, así que convertimos:
     const indexMonFirst = (dow + 6) % 7; // 0=lun...6=dom
     dayOfWeekElements[indexMonFirst].classList.add("highlight2");
   }
