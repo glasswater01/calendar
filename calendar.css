@@ -109,14 +109,15 @@ body {
   height: 100%;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;   /* arriba */
+  justify-content: flex-start; /* izquierda */
 
-  border-radius: 12px;
+  padding: 10px;
+
+  border-radius: 18px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
 }
-
 
 .highlight {
   background-color: #354c52;
