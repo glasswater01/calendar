@@ -240,7 +240,7 @@ body {
   background-position: center 100%; /* ⬇️ más abajo */
   background-size: 25%;            /* 📏 más pequeño */
 
-  opacity: 0.08;                   /* 🌫️ más sutil */
+  opacity: 0.12;                   /* 🌫️ más sutil */
 
   pointer-events: none;
 }
