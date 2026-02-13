@@ -223,6 +223,26 @@ body {
   opacity: 1;
 }
 
+.calendar {
+  position: relative; /* importante */
+  overflow: hidden;
+}
+
+/* Imagen decorativa centrada */
+.calendar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("./Oval_Icona_Avatar_2560x1440_1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40%; /* cambia este número si la quieres más grande o pequeña */
+
+  opacity: 0.15; /* transparencia para que no moleste al contenido */
+
+  pointer-events: none; /* no bloquea clics */
+}
 
 
 
