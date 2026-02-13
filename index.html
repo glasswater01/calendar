@@ -57,37 +57,37 @@
     );
   }
 
-  function keepNekoInsideCalendar() {
+  function placeNekoOverDateText() {
     const cal = document.querySelector(".calendar");
     const neko = findNekoElement();
-    if (!cal || !neko) return;
+    const dateLine = document.getElementById("fullDate2"); // la línea de "日付: ..."
 
-    const r = cal.getBoundingClientRect();
-    const pad = 10;
+    if (!cal || !neko || !dateLine) return;
 
-    // Guardamos el transform original UNA sola vez (sin nuestros offsets)
-    if (!neko.dataset.baseTransform) {
-      neko.dataset.baseTransform = neko.style.transform || "";
-    }
+    const calRect = cal.getBoundingClientRect();
+    const dateRect = dateLine.getBoundingClientRect();
 
-    const x = r.left + pad;
-    const y = r.top + pad;
+    // Queremos el gato encima del texto: ajusta estos offsets a tu gusto
+    const x = (dateRect.left - calRect.left) + 10;  // 10px a la derecha del inicio del texto
+    const y = (dateRect.top  - calRect.top)  - 25;  // 25px por encima del texto
 
-    // ✅ No acumulamos: siempre ponemos translate(x,y) + el transform base
-    neko.style.transform = `translate(${x}px, ${y}px) ${neko.dataset.baseTransform}`.trim();
+    // WebNeko suele moverse con left/top
+    neko.style.left = `${x}px`;
+    neko.style.top = `${y}px`;
   }
 
-  const wait = setInterval(() => {
-    const neko = findNekoElement();
-    if (neko) {
-      clearInterval(wait);
-      keepNekoInsideCalendar();
-      setInterval(keepNekoInsideCalendar, 50);
-      window.addEventListener("resize", keepNekoInsideCalendar);
-      window.addEventListener("scroll", keepNekoInsideCalendar);
+  // Esperar a que el script cree el neko y luego colocarlo
+  const waitNeko = setInterval(() => {
+    if (findNekoElement()) {
+      clearInterval(waitNeko);
+      placeNekoOverDateText();
+      // por si cambia el tamaño al cargar fuentes o al redimensionar
+      setTimeout(placeNekoOverDateText, 300);
+      window.addEventListener("resize", placeNekoOverDateText);
     }
   }, 50);
 </script>
+
 </body>
 </html>
 
