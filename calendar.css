@@ -204,24 +204,25 @@ body {
   pointer-events: none;
 }
 #musicCover {
-  position: fixed;
-  inset: 0;
-  background: transparent; /* sin fondo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;      /* dentro del calendario */
+  right: 16px;
+  bottom: 16px;
   z-index: 9999;
 }
 
 #coverImage {
-  max-width: 55%;
+  width: 70px;             /* tamaño pequeño */
+  height: auto;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
 }
 
 #coverImage:hover {
   transform: scale(1.05);
+  opacity: 1;
 }
+
 
 
 
