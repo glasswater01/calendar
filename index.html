@@ -44,11 +44,33 @@
 <script>
   NekoType = "blue";
 </script>
-<h1 id="nl">
-  <script src="https://webneko.net/n20171213.js"></script>
-  <a href="https://webneko.net">Neko</a>
-</h1>
+<script src="https://webneko.net/n20171213.js"></script>
+
+<script>
+  function positionNekoInsideCalendar() {
+    const cal = document.querySelector(".calendar");
+    const neko = document.getElementById("neko");
+    if (!cal || !neko) return;
+
+    const r = cal.getBoundingClientRect();
+    const pad = 10;
+
+    document.documentElement.style.setProperty("--neko-offset-x", (r.left + pad) + "px");
+    document.documentElement.style.setProperty("--neko-offset-y", (r.top + pad) + "px");
+  }
+
+  const nekoWait = setInterval(() => {
+    if (document.getElementById("neko")) {
+      clearInterval(nekoWait);
+      positionNekoInsideCalendar();
+    }
+  }, 50);
+
+  window.addEventListener("resize", positionNekoInsideCalendar);
+  window.addEventListener("scroll", positionNekoInsideCalendar);
+</script>
 
 </body>
 </html>
+
 
