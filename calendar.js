@@ -58,22 +58,22 @@ function generateCalendar(year, month, day) {
     dayNumber.textContent = d;
 
     // ✅ EVENTO: 20 de febrero con imagen + link
-    if (d === EVENT_DAY && month === EVENT_MONTH_INDEX) {
-      dayElement.classList.add("has-event");
-      dayElement.style.backgroundImage = `url("${EVENT_IMAGE_URL}")`;
+     if (d === EVENT_DAY && month === EVENT_MONTH_INDEX) {
+  dayElement.classList.add("has-event");
+  dayElement.style.backgroundImage = `url("${EVENT_IMAGE_URL}")`;
 
-      // Todo el recuadro clicable
-      const a = document.createElement("a");
-      a.href = EVENT_LINK;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.classList.add("day-link");
+  // Añadimos el número normalmente
+  dayElement.appendChild(dayNumber);
 
-      // Metemos el número dentro del link
-      a.appendChild(dayNumber);
+  // Creamos un link invisible que cubra todo el cuadrado
+  const a = document.createElement("a");
+  a.href = EVENT_LINK;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.classList.add("day-link");
 
-      dayElement.appendChild(a);
-    } else {
+  dayElement.appendChild(a);
+} else {
       // Día normal
       dayElement.appendChild(dayNumber);
     }
