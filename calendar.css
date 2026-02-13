@@ -236,13 +236,15 @@ body {
 
   background-image: url("./Oval_Icona_Avatar_2560x1440_1.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 40%; /* cambia este número si la quieres más grande o pequeña */
 
-  opacity: 0.15; /* transparencia para que no moleste al contenido */
+  background-position: center 70%; /* ⬇️ más abajo */
+  background-size: 25%;            /* 📏 más pequeño */
 
-  pointer-events: none; /* no bloquea clics */
+  opacity: 0.08;                   /* 🌫️ más sutil */
+
+  pointer-events: none;
 }
+
 
 
 
