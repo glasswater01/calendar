@@ -196,5 +196,10 @@ body {
   background: rgba(255, 255, 255, 0.85);
   padding: 4px 6px;
 }
+/* Desplaza visualmente al Neko para que quede dentro del calendario */
+#neko {
+  transform: translate(var(--neko-offset-x, 0px), var(--neko-offset-y, 0px));
+}
+
 
 
