@@ -41,9 +41,28 @@ function generateCalendar(year, month, day) {
   }
 
   for (let d = 1; d <= daysInMonth; d++) {
-    const dayElement = document.createElement("div");
-    dayElement.textContent = d;
-    dayElement.classList.add("day");
+  const dayElement = document.createElement("div");
+  dayElement.classList.add("day");
+
+  // Número del día
+  const dayNumber = document.createElement("div");
+  dayNumber.textContent = d;
+  dayElement.appendChild(dayNumber);
+
+  // 🎉 Evento el 20 de febrero
+  if (d === 20 && month === 1) { // febrero = 1 (porque enero es 0)
+    const event = document.createElement("div");
+    event.textContent = "Evento";
+    event.classList.add("event");
+    dayElement.appendChild(event);
+  }
+
+  if (d === today && month === fixedFullDateMonth - 1) {
+    dayElement.classList.add("highlight");
+  }
+
+  daysElement.appendChild(dayElement);
+}
   
     if (d === today && month === fixedFullDateMonth - 1) {
       dayElement.classList.add("highlight");
