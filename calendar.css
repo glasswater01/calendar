@@ -93,12 +93,16 @@ body {
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+  gap: 10px;
+  flex-grow: 1;
 }
 
 .day {
   text-align: center;
-  padding: 5px;
+  padding: 20px 0;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
   border: 1px solid #ddd;
   background-color: #e8edf1; /* Light grey */
   color: #333;
