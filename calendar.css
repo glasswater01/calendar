@@ -99,7 +99,7 @@ body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  gap: 12px;
+  gap: 6px;
   flex: 1 1 auto;
   min-height: 0;
 }
@@ -109,14 +109,12 @@ body {
   background-color: white;
   color: #333;
 
-  /* el grid ya estira, no hace falta width/height */
-  padding: 10px;
+  padding: 8px;
 
-  border-radius: 18px;
-  font-size: 18px;
+  border-radius: 16px;
+  font-size: 20px;
   font-weight: 600;
 
-  /* número arriba-izquierda */
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
