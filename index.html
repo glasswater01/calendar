@@ -57,32 +57,31 @@
   }
 
   function placeNekoOverDateText() {
-    const cal = document.querySelector(".calendar");
     const neko = findNekoElement();
-    const dateLine = document.getElementById("fullDate2"); // la línea de "日付: ..."
+    const dateLine = document.getElementById("fullDate2");
+    if (!neko || !dateLine) return;
 
-    if (!cal || !neko || !dateLine) return;
-
-    const calRect = cal.getBoundingClientRect();
     const dateRect = dateLine.getBoundingClientRect();
 
-    // Queremos el gato encima del texto: ajusta estos offsets a tu gusto
-    const x = (dateRect.left - calRect.left) + 10;  // 10px a la derecha del inicio del texto
-    const y = (dateRect.top  - calRect.top)  - 25;  // 25px por encima del texto
+    // Ajusta estos números a tu gusto
+    const x = dateRect.left + 10;   // un poco a la derecha del texto
+    const y = dateRect.top - 25;    // encima del texto
 
-    // WebNeko suele moverse con left/top
-    neko.style.left = `${x}px`;
-    neko.style.top = `${y}px`;
+    // Si el neko usa coordenadas de página, añadimos el scroll
+    const pageX = x + window.scrollX;
+    const pageY = y + window.scrollY;
+
+    neko.style.left = `${pageX}px`;
+    neko.style.top = `${pageY}px`;
   }
 
-  // Esperar a que el script cree el neko y luego colocarlo
   const waitNeko = setInterval(() => {
     if (findNekoElement()) {
       clearInterval(waitNeko);
       placeNekoOverDateText();
-      // por si cambia el tamaño al cargar fuentes o al redimensionar
       setTimeout(placeNekoOverDateText, 300);
       window.addEventListener("resize", placeNekoOverDateText);
+      window.addEventListener("scroll", placeNekoOverDateText);
     }
   }, 50);
 </script>
