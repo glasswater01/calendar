@@ -230,7 +230,7 @@ body {
 
 .oval-link {
   position: absolute;
-  bottom: 3%;
+  bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -238,12 +238,12 @@ body {
 
 .oval-image {
   width: 300px;        /* tamaño */
-  opacity: 0.15;       /* sutil */
+  opacity: 0.3;       /* sutil */
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .oval-image:hover {
-  opacity: 0.3;
+  opacity: 0.6;
   transform: scale(1.05);
 }
 
