@@ -228,6 +228,24 @@ body {
   overflow: hidden;
 }
 
+.oval-link {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.oval-image {
+  width: 120px;        /* tamaño */
+  opacity: 0.08;       /* sutil */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.oval-image:hover {
+  opacity: 0.2;
+  transform: scale(1.05);
+}
 
 
 
