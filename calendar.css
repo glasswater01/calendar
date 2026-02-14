@@ -178,8 +178,10 @@ body {
 }
 .day.has-event {
   position: relative;
-  background-size: cover;
-  background-position: center 40%;
+  padding: 0; /* 👈 muy importante */
+
+  background-size: cover;      /* llena todo el cuadrado */
+  background-position: center; /* centrado perfecto */
   background-repeat: no-repeat;
 }
 
