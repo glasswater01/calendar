@@ -10,38 +10,52 @@
     const music = document.getElementById("bgMusic");
     if (!music) return;
 
-    function attachHover() {
+    music.volume = 0.5;
+
+    // Intento de "desbloqueo" suave: con el primer click/tecla, hover ya funcionará seguro
+    const unlock = async () => {
+      try {
+        await music.play();
+        music.pause();
+        music.currentTime = 0;
+      } catch (_) {}
+      document.removeEventListener("click", unlock);
+      document.removeEventListener("keydown", unlock);
+      document.removeEventListener("touchstart", unlock);
+    };
+    document.addEventListener("click", unlock);
+    document.addEventListener("keydown", unlock);
+    document.addEventListener("touchstart", unlock, { passive: true });
+
+    function attachHoverToEventDay() {
       const eventDay = document.querySelector(".day.has-event");
       if (!eventDay) return;
 
-      let started = false;
-
       eventDay.addEventListener("mouseenter", async () => {
         try {
-          music.volume = 0.5;
+          music.currentTime = 0;   // empieza desde el principio cada vez
           await music.play();
-          started = true;
         } catch (e) {
-          // Si el navegador lo bloquea, no hacemos nada (necesitaría click)
-          console.log("Autoplay/hover bloqueado:", e);
+          // Si está bloqueado, no sonará hasta que haya un click/tecla
+          console.log("Audio bloqueado hasta interacción:", e);
         }
       });
 
       eventDay.addEventListener("mouseleave", () => {
-        if (started) {
-          music.pause();
-          music.currentTime = 0; // vuelve al inicio (opcional)
-          started = false;
-        }
+        music.pause();
+        music.currentTime = 0;
       });
     }
 
-    // El calendario se regenera al cambiar de mes, así que re-enganchamos cada vez
-    attachHover();
-    document.getElementById("prev-month")?.addEventListener("click", () => setTimeout(attachHover, 0));
-    document.getElementById("next-month")?.addEventListener("click", () => setTimeout(attachHover, 0));
+    // Al cargar
+    attachHoverToEventDay();
+
+    // Como regeneras el calendario al cambiar mes, re-engancha eventos
+    document.getElementById("prev-month")?.addEventListener("click", () => setTimeout(attachHoverToEventDay, 0));
+    document.getElementById("next-month")?.addEventListener("click", () => setTimeout(attachHoverToEventDay, 0));
   });
 </script>
+
   <body>
 </div>
     <div class="calendar">
