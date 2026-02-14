@@ -188,17 +188,22 @@ body {
 /* El link ocupa todo el cuadrado */
 .day-link {
   position: absolute;
-  inset: 0;          /* top:0; right:0; bottom:0; left:0 */
-  z-index: 1;
+  inset: 0;
+  z-index: 5;
+  display: block;
 }
 
+
 /* El número queda encima */
-.day.has-event > div {
+.day.has-event {
   position: relative;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 4px 6px;
+  padding: 0; /* 👈 muy importante */
+
+  background-size: cover;      /* llena todo el cuadrado */
+  background-position: center; /* centrado perfecto */
+  background-repeat: no-repeat;
 }
+
 .calendar { 
   position: relative; 
 }
