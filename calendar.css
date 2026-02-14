@@ -237,7 +237,7 @@ body {
 }
 
 .oval-image {
-  width: 120px;        /* tamaño */
+  width: 240px;        /* tamaño */
   opacity: 0.08;       /* sutil */
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
