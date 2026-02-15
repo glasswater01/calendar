@@ -120,7 +120,7 @@ body {
 }
 
 .highlight {
-  background-color: #bababa; /* mismo color que los demás días */
+  background-color: rgba(255, 255, 255, 0.75); /* mismo color que los demás días */
   border: none;
 }
 
