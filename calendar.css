@@ -58,7 +58,7 @@ body {
   display: inline-block;
   text-align: right;
   margin-top: -2px;
-  color: #403a38;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 /* Button Bar Styles */
