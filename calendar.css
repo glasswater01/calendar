@@ -119,13 +119,10 @@ body {
   justify-content: flex-start;
 }
 
-
-
 .highlight {
-  background-color: inherit; /* no cambia el fondo */
+  background-color: #bababa; /* mismo color que los demás días */
   border: none;
 }
-
 
 /* Clock Styles */
 .clock {
