@@ -139,14 +139,12 @@ body {
 
 #clock-left {
   padding-left: 10px;
-  font-weight: bold;
   display: inline-block;
   text-align: left;
 }
 
 #clock-right {
   padding-right: 10px;
-  font-weight: bold;
   display: inline-block;
   text-align: right;
 }
