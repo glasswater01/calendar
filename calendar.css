@@ -305,7 +305,7 @@ body {
 
 .birthday-gif {
   position: absolute;
-  bottom: -10px;        /* lo pega abajo */
+  bottom: -20px;        /* lo pega abajo */
   left: 50%;
   transform: translateX(-50%);
 
