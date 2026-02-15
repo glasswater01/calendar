@@ -243,12 +243,12 @@ body {
 
 .oval-image {
   width: 300px;        /* tamaño */
-  opacity: 0.3;       /* sutil */
+  opacity: 0.6;       /* sutil */
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .oval-image:hover {
-  opacity: 0.6;
+  opacity: 1;
   transform: scale(1.05);
 }
 
