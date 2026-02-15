@@ -15,7 +15,8 @@ const clockElementRight = document.getElementById("clock-right");
 const fixedFullDateYear = currentDate1.getFullYear();
 const fixedFullDateMonth = currentDate1.getMonth() + 1;
 const fixedFullDateDay = currentDate1.getDate();
-const fixedJapaneseDay = japaneseDays[currentDate1.getDay() - 1];
+const fixedJapaneseDay = japaneseDays[(currentDate1.getDay() + 6) % 7];
+
 
 fullDate2Element.textContent = `日付: ${fixedFullDateYear}年${fixedFullDateMonth}月${fixedFullDateDay}日 (${fixedJapaneseDay})`;
 
