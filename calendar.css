@@ -175,13 +175,19 @@ body {
   font-weight: bold;
 }
 .day.has-event {
-  position: relative;
-  padding: 0; /* 👈 muy importante */
+  padding: 0 !important;      /* elimina espacio interno */
+  border: none !important;    /* elimina borde blanco */
+  background-color: transparent; /* elimina fondo gris */
 
-  background-size: cover;      /* llena todo el cuadrado */
-  background-position: center; /* centrado perfecto */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
+
 
 /* El link ocupa todo el cuadrado */
 .day-link {
