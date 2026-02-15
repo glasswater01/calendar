@@ -64,7 +64,7 @@ if (d === 16 && month === 1) {
   marquee.classList.add("marquee");
 
   const marqueeText = document.createElement("span");
-  marqueeText.textContent = "💖🎉 Feliz cumpleaños guapetón!!!!!!!! 🎂✨💘💞";
+  marqueeText.textContent = "feliz cumpleaños guapetón!!!!!! <3 <3 <3 pastelito de limon, meloncito, bellotita";
 
   marquee.appendChild(marqueeText);
   dayElement.appendChild(marquee);
