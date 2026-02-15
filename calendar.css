@@ -122,10 +122,10 @@ body {
 
 
 .highlight {
-  background-color: #354c52;
-  border: 1px solid #354c49;
-  color: white;
+  background-color: inherit; /* no cambia el fondo */
+  border: none;
 }
+
 
 /* Clock Styles */
 .clock {
@@ -255,6 +255,17 @@ body {
   transform: scale(1.05);
 }
 
+/* Círculo del día actual */
+.day.highlight > div {
+  background-color: #1D6AEC;  /* azul principal */
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 
