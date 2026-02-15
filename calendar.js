@@ -59,18 +59,22 @@ function generateCalendar(year, month, day) {
     dayNumber.textContent = d;
 
     // 💖 Mensaje animado: 16 de febrero
-if (d === 16 && month === 1) { // febrero = 1
+if (d === 16 && month === 1) {
   const marquee = document.createElement("div");
   marquee.classList.add("marquee");
 
   const marqueeText = document.createElement("span");
-  marqueeText.textContent = "feliz cumpleaños guapetón!!!!!!!! <3 <3 <3 patatita meloncito pastelito de limon ";
+  marqueeText.textContent = "💖🎉 Feliz cumpleaños guapetón!!!!!!!! 🎂✨💘💞";
 
   marquee.appendChild(marqueeText);
-
-  // Añadimos número + texto animado
-  dayElement.appendChild(dayNumber);
   dayElement.appendChild(marquee);
+
+  // 🎁 Añadimos GIF debajo
+  const gif = document.createElement("img");
+  gif.src = "./cumple.gif";   // cambia el nombre si es distinto
+  gif.classList.add("birthday-gif");
+
+  dayElement.appendChild(gif);
 } else {
   // Día normal: solo número (si no lo estás añadiendo ya en otro sitio)
   // OJO: si tu código ya hace dayElement.appendChild(dayNumber) más abajo, NO dupliques.
