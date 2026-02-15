@@ -64,7 +64,7 @@ if (d === 16 && month === 1) { // febrero = 1
   marquee.classList.add("marquee");
 
   const marqueeText = document.createElement("span");
-  marqueeText.textContent = "feliz cumpleaños guapetón!!!!!!!! <3 <3 <3";
+  marqueeText.textContent = "feliz cumpleaños guapetón!!!!!!!! <3 <3 <3 patatita meloncito pastelito de limon ";
 
   marquee.appendChild(marqueeText);
 
